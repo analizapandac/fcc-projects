@@ -1,0 +1,37 @@
+{
+  "name": "Random Quote Machine",
+  "description": "One of my FCC front-end projects.",
+  "main": "",
+  "authors": [
+    "Ana Liza <analizapandac@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "laravel",
+    "jwt",
+    "satellizer",
+    "rest",
+    "lumen",
+    "materialize"
+  ],
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "font-awesome": "fontawesome#~4.5.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.8"
+  }
+}

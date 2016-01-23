@@ -1,0 +1,53 @@
+[
+	{
+		"id": 1,
+		"quote": "Nothing can bring you peace but yourself.",
+		"author": "Ralph Waldo Emerson",
+		"background_image": "images/someone-alone.jpg",
+		"photo_credit": {
+			"photographer": "Chris Sardegna",
+			"unsplash_link": "https://unsplash.com/photos/CMOa3H1SXG0"
+		} 
+	},
+	{
+		"id": 2,
+		"quote": "The secret of going ahead is getting started.",
+		"author": "Mark Twain",
+		"background_image": "images/getting-ahead.jpg",
+		"photo_credit": {
+			"photographer": "Aneta Ivanova",
+			"unsplash_link": "https://unsplash.com/photos/tPKQwYHy8q4"
+		} 
+	},
+	{
+		"id": 3,
+		"quote": "Stop wishing. Start creating.",
+		"author": "Anonymous",
+		"background_image": "images/start-doing.jpg",
+		"photo_credit": {
+			"photographer": "Angelina Litvin",
+			"unsplash_link": "https://unsplash.com/photos/S6wHfOpdGkY"
+		} 
+	},
+	{
+		"id": 4,
+		"quote": "What you do, the way you think, makes you beautiful.",
+		"author": "Scott Westerfeld",
+		"book": "Uglies",
+		"background_image": "images/beautiful-quote.jpg",
+		"photo_credit": {
+			"photographer": "Christopher Campbell",
+			"unsplash_link": "https://unsplash.com/chrisjoelcampbell"
+		} 
+	},
+	{
+		"id": 5,
+		"quote": "Friends are the family that you don't have.",
+		"author": "Anonymous",
+		"background_image": "images/friends.jpg",
+		"photo_credit": {
+			"photographer": "Krista Mangulsone",
+			"unsplash_link": "https://unsplash.com/photos/9gz3wfHr65U"
+		} 
+	}
+]
