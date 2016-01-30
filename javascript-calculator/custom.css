@@ -1,0 +1,41 @@
+/* Calculator CSS */
+
+#calculator-wrapper {
+    width: 327px;
+    margin: auto;
+    padding: 2%;
+    border: 1px solid #ddd;
+}
+
+.screen{
+    border: 1px solid #ddd;
+    min-height: 45px;
+    color: #5A5252;
+    font-size: 21px;
+    padding: 3% 2% 3% 2%;
+    text-align: right;
+}
+
+.buttons-wrapper{
+    padding-top: 10px;
+    text-align: left;
+}
+
+.buttons-wrapper .button{
+    border: 1px solid #ddd;
+    cursor: pointer;
+    font-size: 15px;
+    min-width: 60px;
+    display: inline-block;
+    margin-right: 9px;
+    padding: 10px;
+    text-align: center;
+}
+
+.btn-zero{
+    min-width: 133px !important;
+}
+
+.buttons-wrapper .button:last-of-type{
+    margin-right: 0;
+}

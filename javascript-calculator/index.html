@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Calculator</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="custom.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <br>
+                    <h2>JavaScript Calculator</h2>
+                    <hr>
+
+                    <div id="calculator-wrapper">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="screen">
+                                    <span id="result">0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons-wrapper">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="button" id="btn-clear">AC</div>
+                                    <div class="button">EC</div>
+                                    <div class="button" id="btn-undo">x</div>
+                                    <div class="button btn-operator">/</div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="buttons-wrapper">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="button btn-number">7</div>
+                                    <div class="button btn-number">8</div>
+                                    <div class="button btn-number">9</div>
+                                    <div class="button btn-operator">*</div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="buttons-wrapper">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="button btn-number">4</div>
+                                    <div class="button btn-number">5</div>
+                                    <div class="button btn-number">6</div>
+                                    <div class="button btn-operator">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons-wrapper">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="button btn-number">1</div>
+                                    <div class="button btn-number">2</div>
+                                    <div class="button btn-number">3</div>
+                                    <div class="button btn-operator">+</div>
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="buttons-wrapper">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="button btn-zero btn-number">0</div>
+                                    <div class="button" id="btn-decimal">.</div>
+                                    <div class="button" id="btn-calculate">=</div>
+                                </div>
+                            </div>
+                        </div>     
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="lib/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="calculator.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function (){
+            var calculator = calculatorApp();
+
+            $('.btn-number').click(function (){
+                var number = parseInt($(this).html());
+                calculator.clickNumber(number);
+            });
+
+            $('.btn-operator').click(function (){
+                var operator = $(this).html();
+                calculator.clickOperator(operator);
+            });
+
+            $('#btn-decimal').click(function () {
+                calculator.clickDecimal();
+            });
+
+            $('#btn-clear').click(function () {
+                calculator.clearStack();
+            });
+
+            $('#btn-calculate').click(function () {
+                calculator.calculate();
+            });
+
+            $('#btn-undo').click(function () {
+                calculator.undo();
+            });
+
+
+        });
+    </script>
+    
+
+</body>
+</html>
