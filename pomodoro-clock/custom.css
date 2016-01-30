@@ -1,0 +1,59 @@
+#buttons-wrapper{
+    display: none;
+    position: relative;
+    top: -20px;
+}
+
+/*#time-wrapper{
+    margin-bottom: 15px;
+}*/
+#time-wrapper input#knob-minutes{
+    font-size: 42px !important;
+}
+.align-left{
+    text-align: left !important;
+}
+.one-digit{
+    margin-left: -140px !important;
+}
+.one-digit-minute{
+    right: -15px !important;
+}
+.is_time_running{
+    right: -2px !important;
+}
+#seconds-wrapper{
+    visibility: hidden;
+    position: relative;
+    top: -130px;
+    right: -25px;
+    color: #449d44;
+    font-weight: bold;
+    font-style: normal;
+    font-variant: normal;
+    font-stretch: normal;
+    font-size: 42px;
+    line-height: normal;
+    font-family: Arial;
+
+}
+#seconds-wrapper #time-colon{
+    position: relative;
+    top: -3px;
+}
+.time-length{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.time-length-indicators .glyphicon{
+    color: #474747;
+}
+.time-length-indicators a:hover{
+    text-decoration: none;
+}
+.time-length-indicators .col-md-6:first-of-type{
+    padding-right: 50px;
+}
+.time-length-indicators .col-md-6:last-of-type{
+    padding-left: 50px;
+}

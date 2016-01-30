@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pomodoro Clock</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="custom.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <br>
+                    <h2>Pomodoro Clock</h2>
+                    <hr>
+                    <h4 id="current-session-type">Focus Time</h4>
+
+                    <div id="time-wrapper">
+
+                        <div id="seconds-wrapper"><span style="display:none" id="span-minutes">25</span><span id="time-colon">:</span><span id="knob-seconds">00</span></div>
+                    </div>
+                    <p id="buttons-wrapper"><button id="btn-start-pomodoro" class="btn btn-success">Start</button> <button id="btn-stop-pomodoro" class="btn btn-danger" style="display:none;">Pause</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="lib/jquery.js"></script>
+    <script src="lib/jquery.knob.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="pomodoro.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            var handler = function (v) {
+                pomodoro.changeTime(v);
+            }
+            // prepend new input field for knob in time-wrapper div
+            // i decided to prepend it here instead to prevent showing the
+            // input field that was not yet transformed into a knob
+            jQuery('#time-wrapper').prepend('<input type="text" id="knob-minutes" value="1">');
+
+            jQuery('#buttons-wrapper').show();
+
+            $("#knob-minutes").knob( {
+                'min':0,
+                'max':59,
+                'fgColor': '#449d44',
+                'release': handler,
+                'change': handler
+            });
+
+            var pomodoro = pomodoroClock();
+            //
+            $('#btn-start-pomodoro').click(function(){
+                pomodoro.start();
+            });
+            $('#btn-stop-pomodoro').click(function(){
+                pomodoro.pause();
+            });
+
+            $('#btn-decrease-session').click(function(){
+                pomodoro.decreaseSessionTime();
+            });
+
+            $('#btn-increase-session').click(function(){
+                pomodoro.increaseSessionTime();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>My Pomodoro Test</title>
+	<link rel="stylesheet" href="lib/qunit.css"/>
+	<link rel="stylesheet" href="test_styles.css"/>
+</head>
+<body>
+	<div id="qunit"></div>
+	<div id="qunit-fixture"></div>
+	<script src="lib/jquery.js"></script>
+	<script src="pomodoro.js"></script>
+	<script src="lib/qunit.js"></script>
+	<script>
+		var clickIt = function(el){
+			var event = document.createEvent('MouseEvents');
+			event.initMouseEvent('click', true, true, window,
+			1, 0, 0, 0, 0,
+			false, false, false, false,
+			0, null);
+			el.dispatchEvent(event);
+		};
+
+		module('Pomodoro Clock');
+
+		test('startSession', function(){
+			var pomodoro = pomodoroClock();
+			pomodoro.start();
+
+			equal( pomodoro.isStarted(), true, 'should be started');
+		});
+
+		test('pauseSession', function(){
+			var pomodoro = pomodoroClock();
+			pomodoro.start();
+			equal( pomodoro.isStarted(), true, 'should be started');
+			pomodoro.pause();
+			equal( pomodoro.isStarted(), false, 'should be started');
+		});
+
+		test('changeSessionTime', function(){
+
+		});
+
+
+		test('startBreak', function(){
+
+		});
+
+		test('increaseDecreaseBreak', function(){
+
+		});
+
+		test('alarmTimer', function(){
+
+		});
+
+	</script>
+</body>
+</html>
