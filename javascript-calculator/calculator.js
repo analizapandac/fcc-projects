@@ -5,7 +5,7 @@ function calculatorApp() {
 	// if operators are clicked one after the other, pop the last operator
 	// from the array and push the new one
 	var stack = [], is_float = false;
-	var operators = ['-', '*', '/', '%', '+'];
+	var operators = ['-', '×', '÷', '+', '%'];
 
 	return {
 		clickNumber: clickNumber,
@@ -28,7 +28,9 @@ function calculatorApp() {
 			// we can add dot(.) in the stack before pushing
 			// the new number
 			is_float = true;
-			console.log('current stack', stack);
+
+			// update the content of the #result element
+			updateView();
 		}
 
 		// if the last item in the stack is a number
@@ -41,7 +43,9 @@ function calculatorApp() {
 			// we can add dot(.) in the stack before pushing
 			// the new number
 			is_float = true;
-			console.log('current stack', stack);
+
+			// update the content of the #result element
+			updateView();
 		}
 
 	}
@@ -57,19 +61,13 @@ function calculatorApp() {
 				stack.pop();
 			}
 
-			// // if the decimal operator is clicked before this number is clicked
-			// // put a decimal before it
-			// // make sure also the last item is not a decimal point
-			// if(is_float && stack[stack.length - 1] !== '.') {
-			// 	stack.push('.');
-			// 	// reset is_float to false
-			// 	//is_float = false;
-			// }
-
 			// push it to the array
 			stack.push(num);
-			console.log('current stack', stack);
+
+			// update the content of the #result element
+			updateView();
 		}
+
 		
 	}
 
@@ -80,7 +78,6 @@ function calculatorApp() {
 			// otherwise, pop it and push the new operator
 			if(operators.indexOf(stack[stack.length - 1]) !== -1) {
 				stack.pop();
-				console.log('the last item is an operator my dear so i pop it out');
 			}
 
 			// if the last item is a decimal point
@@ -97,14 +94,17 @@ function calculatorApp() {
 			// reset the is_float to false
 			is_float = false;
 
-			console.log('current stack', stack);
+			// update the content of the #stack and #result elements
+			updateView();
 		}
 	}
 
 	function clearStack() {
 		// clear the stack
 		stack = [];
-		console.log('current stack', stack);
+
+		// update the content of the #result element
+		updateView();
 
 	}
 
@@ -116,26 +116,33 @@ function calculatorApp() {
 			is_float = false;
 		}
 
-		//pop the last item
-		stack.pop();		
+		// if last item is an operator, pop out the operand the | before it
+		if(operators.indexOf(stack[stack.length - 1]) !== -1) {
+			stack.pop(); // pop the operator
+			stack.pop(); // then the |
+		} else {
 
-		console.log('current stack', stack);
+			//pop the last item
+			stack.pop();	
+
+		}
+
+		// update the content of the #result element
+		updateView();
 	}
 
 	function calculate() {
-		var items = '', result = 0, operator = null, number = 0;
+		var items = [], result = 0, operator = null, number = 0;
 		//var number = '', prev_operator = null;
 		// if last item on stack is decimal point
 		// pop it out
 		if(stack[stack.length - 1] === '.') {
 			stack.pop();
-			console.log('i pop out the last item darling because either its an operand or a point');
 		}
 		// if last item is an operator, pop out the operand the | before it
 		if(operators.indexOf(stack[stack.length - 1]) !== -1) {
 			stack.pop();
 			stack.pop();
-			console.log('i pop out the last item darling because either its an operand or a point');
 		}
 
 		// join the current stack and split it using this operator | 
@@ -161,23 +168,87 @@ function calculatorApp() {
 				}
 
 				// multiplication
-				if(operator === '*') {
+				if(operator === '×') {
 					result *= parseFloat(number);	
 				}
 
 				// division
-				if(operator === '/') {
+				if(operator === '÷') {
 					result /= parseFloat(number);	
+				}
+
+				// modulo
+				if(operator === '%') {
+					result %= parseFloat(number);	
 				}
 
 			}
 		}
 
+		// only round the result if it is a floating number with more than 6 digits after the decimal
+		// point
+		if(result.toString().split('').indexOf('.') !== -1) {
+			var decimals = result.toString().split('.');
+			if(decimals[1].length > 7) {
+				result = result.toFixed(7);
+			}
+		}
+		
 		// show the result on the screen
-		jQuery('#result').html(result);
+		jQuery('#current-stack').html(result);
 
-		console.log('items', items);
-		console.log('result', result);
+		if(result.length >= 15) {
+			jQuery('#current-stack').addClass('text-sm');
+		} else {
+			jQuery('#current-stack').removeClass('text-sm');
+		}
+
+		//reset stack with the result
+		stack = [result];
+
+	}
+
+	// private methods
+	function updateView() {
+		var items = [], stack_to_display = [], last_number = 0;
+
+		// if stack is empty, display zero and stop executing this function
+		if(stack.length === 0) {
+			jQuery('#current-stack').html('0');
+			return;
+		}
+
+		// join the current stack and split it using this operator | 
+		items = stack.join('').split('|');
+
+		// loop through the items to remove the operators 
+		// and store the new items to the new array
+		for (var i=0 ; i < items.length; i++) {
+	
+			if(i === 0) {
+				// if this is the first item
+				// use parseFloat because the other numbers in the stack might be floating numbers
+				stack_to_display.push(parseFloat(items[i]));
+			} else{
+				// get the number and the operator
+				// push the operator first
+				// then the number
+				stack_to_display.push(items[i].charAt(0));
+				stack_to_display.push(items[i].substr(1));
+			}
+		}
+
+		// display the current stack
+		jQuery('#current-stack').html(stack_to_display.join(''));
+
+		// if the stack is too long (more than 14 chars), make the font smaller by
+		// adding class text-sm
+		if(stack_to_display.join('').length >= 15) {
+			jQuery('#current-stack').addClass('text-sm');
+		} else {
+			jQuery('#current-stack').removeClass('text-sm');
+		}
+
 	}
 
 }

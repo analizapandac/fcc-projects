@@ -1,19 +1,42 @@
 /* Calculator CSS */
 
+body {
+    background: #333;
+    color: #fff;
+}
+
 #calculator-wrapper {
     width: 327px;
     margin: auto;
     padding: 2%;
-    border: 1px solid #ddd;
+    border: 1px solid #424242;
+    margin-top: 50px;
 }
 
 .screen{
-    border: 1px solid #ddd;
-    min-height: 45px;
-    color: #5A5252;
+    border: 1px solid #424242;
+    border-top: 1px solid #8dc63f;
+    background: #424242;
+    min-height: 64px;
+    color: #fff;
     font-size: 21px;
     padding: 3% 2% 3% 2%;
     text-align: right;
+}
+
+#current-stack{
+    font-size: 32px;
+    margin-bottom: 0;
+    word-wrap: break-word;  
+}
+
+#result{
+    font-size: 32px;
+    margin-bottom: 0;
+}
+
+.text-sm{
+    font-size: 18px !important;
 }
 
 .buttons-wrapper{
@@ -21,8 +44,9 @@
     text-align: left;
 }
 
-.buttons-wrapper .button{
-    border: 1px solid #ddd;
+.button{
+    border: 1px solid #424242;
+    background: #424242;
     cursor: pointer;
     font-size: 15px;
     min-width: 60px;
@@ -30,6 +54,17 @@
     margin-right: 9px;
     padding: 10px;
     text-align: center;
+    color: #E2E2E2;
+
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;         
+}
+
+.button:hover{
+    border: 1px solid #656363;
+    background: #656363;
 }
 
 .btn-zero{
@@ -38,4 +73,25 @@
 
 .buttons-wrapper .button:last-of-type{
     margin-right: 0;
+}
+
+#btn-calculate {
+    background: #76A535;
+    border: 1px solid #76A535;
+    font-weight: bold;
+    color: #fff;
+}
+
+#btn-calculate:hover{
+    background: #8dc63f;
+    border: 1px solid #8dc63f;
+}
+
+#project-name, #project-name a{
+    color: #656363;
+    font-size: 13px;
+}
+#project-name a:hover{
+    color: #8dc63f;
+    text-decoration: none;
 }
