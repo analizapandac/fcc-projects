@@ -1,12 +1,14 @@
+/*body {
+    background: #545454;
+    color: #fff;
+}*/
+
 #buttons-wrapper{
     display: none;
     position: relative;
     top: -20px;
 }
 
-/*#time-wrapper{
-    margin-bottom: 15px;
-}*/
 #time-wrapper input#knob-minutes{
     font-size: 42px !important;
 }
@@ -57,3 +59,13 @@
 .time-length-indicators .col-md-6:last-of-type{
     padding-left: 50px;
 }
+
+#project-name, #project-name a{
+    color: #656363;
+    font-size: 13px;
+}
+#project-name a:hover{
+    color: #8dc63f;
+    text-decoration: none;
+}
+

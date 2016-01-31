@@ -2,7 +2,7 @@
 
 function pomodoroClock() {
     //i decided to use seconds instead of minutes
-    var session = 1 * 60, temp_session = 1 * 60, temp_break = 1 * 60, break_time = 1 * 60, started = false, minutes = 0, seconds = 0, interval, prev_time = 0, is_break = false, is_seconds = false, seconds_remaining = 0, is_paused = false;
+    var session = 25 * 60, temp_session = 25 * 60, temp_break = 25 * 60, break_time = 25 * 60, started = false, minutes = 0, seconds = 0, interval, prev_time = 0, is_break = false, seconds_remaining = 0, is_paused = false;
     var is_changed = false;
 
     return {
@@ -14,8 +14,7 @@ function pomodoroClock() {
 
     function start() {
 
-        console.log(seconds_remaining, session);
-
+     
         // it is paused, add the last recorded seconds
         // i have to record each seconds remaining
 
@@ -37,7 +36,6 @@ function pomodoroClock() {
         is_changed = false;
 
         started = true;
-        is_seconds = false;
 
         prev_time = parseInt(session / 60);
 
@@ -78,23 +76,13 @@ function pomodoroClock() {
 
             if(session > 0)  session -= 1;
 
-            if(session <= 59) {
-                if( !is_seconds ){
-                    is_seconds = true;
-                    console.log('seconds nalng');
-                }
-
-            }
-
             updateClockView();
 
 
             if(session === 0){
                 if( !is_break ){
-                    is_seconds = false;
                     jQuery('#current-session-type').html('Break Time');
                     is_break = true;
-                    console.log('break time started at', temp_break / 60);
                     session = temp_break;
 
                     clearInterval(interval);
@@ -102,7 +90,7 @@ function pomodoroClock() {
                     start();
 
                 } else {
-                    console.log('restarted again', temp_session / 60);
+
                     jQuery('#current-session-type').html('Focus Time');
 
                     is_break = false;
@@ -206,12 +194,6 @@ function pomodoroClock() {
         // record that the session was paused
         is_paused = true;
 
-        //temp_session = parseInt(session / 60);
-        //temp_break = parseInt(break_time / 60);
-        //console.log('session and break time', session, break_time);
-        //console.log('temp session and break time', temp_session, temp_break);
-
-        //started = false;
 
         clearInterval(interval);
 
@@ -241,7 +223,6 @@ function pomodoroClock() {
         jQuery('#seconds-wrapper').css('color', '#449d44');
         jQuery('#knob-minutes').removeClass('one-digit');
         jQuery('#seconds-wrapper').removeClass('one-digit-minute');
-        //jQuery('#seconds-wrapper').css('visibility', 'hidden');
 
         if(parseInt(session / 60) < 10) {
             jQuery('#knob-minutes').addClass('align-left');

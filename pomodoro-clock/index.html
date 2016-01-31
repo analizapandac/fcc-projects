@@ -12,15 +12,21 @@
             <div class="col-md-12">
                 <div class="text-center">
                     <br>
-                    <h2>Pomodoro Clock</h2>
-                    <hr>
+    
                     <h4 id="current-session-type">Focus Time</h4>
 
                     <div id="time-wrapper">
 
                         <div id="seconds-wrapper"><span style="display:none" id="span-minutes">25</span><span id="time-colon">:</span><span id="knob-seconds">00</span></div>
                     </div>
-                    <p id="buttons-wrapper"><button id="btn-start-pomodoro" class="btn btn-success">Start</button> <button id="btn-stop-pomodoro" class="btn btn-danger" style="display:none;">Reset</button></p>
+
+                    <div id="buttons-wrapper">
+                        <button id="btn-start-pomodoro" class="btn btn-success">Start</button> 
+                        <button id="btn-stop-pomodoro" class="btn btn-danger" style="display:none;">Reset</button>
+                    </div>
+
+                    <br /> 
+                    <p id="project-name">Pomodoro Clock by <a href="http://www.freecodecamp.com/camperliz" target="_blank">@camperliz</a></p>
                 </div>
             </div>
         </div>
@@ -39,7 +45,7 @@
             // prepend new input field for knob in time-wrapper div
             // i decided to prepend it here instead to prevent showing the
             // input field that was not yet transformed into a knob
-            jQuery('#time-wrapper').prepend('<input type="text" id="knob-minutes" value="1">');
+            jQuery('#time-wrapper').prepend('<input type="text" id="knob-minutes" value="25">');
 
             jQuery('#buttons-wrapper').show();
 
